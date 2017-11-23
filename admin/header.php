@@ -11,12 +11,12 @@
             <a class="navbar-brand" href="#">后台管理系统</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="#">商品管理</a></li>
-                <li><a href="#">订单管理</a></li>
-                <li><a href="#">客户管理</a></li>
-                <li><a href="#">Help</a></li>
-            </ul>
+<!--            <ul class="nav navbar-nav">-->
+<!--                <li><a href="#">商品管理</a></li>-->
+<!--                <li><a href="#">订单管理</a></li>-->
+<!--                <li><a href="#">客户管理</a></li>-->
+<!--                <li><a href="#">Help</a></li>-->
+<!--            </ul>-->
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">[admin]</a></li>
                 <li><a href="#">消息</a></li>

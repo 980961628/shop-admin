@@ -1,3 +1,24 @@
 body {
   padding: 70px 0 0;
 }
+ul {
+  list-style: none;
+}
+body,
+html {
+  min-height: 800px;
+}
+.slider-left .list-group-item ul {
+  -webkit-padding-start: 20px;
+}
+.slider-left .list-group-item ul li {
+  cursor: pointer;
+}
+.slider-left .list-group-item ul li:hover {
+  font-weight: bolder;
+}
+.main iframe {
+  height: 500px;
+  width: 100%;
+  border: 1px solid #ddd;
+}

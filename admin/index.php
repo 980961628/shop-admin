@@ -8,8 +8,8 @@
     <meta name="description" content="后台管理系统">
     <meta name="author" content="zhugege">
     <title>后台管理系统</title>
-    <link href="./public/plugins/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./public/css/index.css">
+    <?php include "public.php" ?>
+
 </head>
 
 <body>
@@ -20,21 +20,48 @@
         <div class="row">
             <div  style="max-width: 180px" class="col-sm-2 col-md-2 col-lg-2 slider-left">
                 <ul class="list-group">
-                    <a class="list-group-item active" href="shop-list.php" target="page">商品列表</a>
-                    <li class="list-group-item">分类管理</li>
-                    <li class="list-group-item">属性管理</li>
-                    <li class="list-group-item">聚合商品</li>
+                    <li class="list-group-item ">
+                        <h4>商品管理</h4>
+                        <ul>
+                            <li><a href="shop/shop-list.php" target="page">商品列表</a></li>
+                            <li><a href="shop/shop-add.php" target="page">添加商品</a></li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <h4>分类管理</h4>
+                        <ul>
+                            <li><a href="category/category-list.php" target="page">分类列表</a></li>
+                            <li><a href="category/category-add.php" target="page">添加分类</a></li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <h4>用户管理</h4>
+                        <ul>
+                            <li><a href="user/user-list.php" target="page">用户列表</a></li>
+                            <li><a href="user/user-add.php" target="page">添加用户</a></li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <h4>订单管理</h4>
+                        <ul>
+                            <li><a href="orders/order-list.php" target="page">订单列表</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
-            <div class="col-sm-10 col-md-10 col-lg-10 ">
-                <iframe src="welcome.php" class="container" name="page"></iframe>
+            <div class="col-sm-10 col-md-10 col-lg-10 main">
+                <iframe src="welcome.php" class="container" name="page" id="page"></iframe>
             </div>
         </div>
     </div>
     <!--  footer start  -->
     <?php include('footer.php');?>
     <!--  footer end  -->
-<script src="./public/plugins/jquery-3.2.1/jquery.min.js"></script>
-<script src="./public/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        $(function(){
+
+        })
+    </script>
 </body>
 </html>
