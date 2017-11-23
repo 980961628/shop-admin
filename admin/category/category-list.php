@@ -9,7 +9,6 @@
     $offset = $pageSize*($page-1);
     $sql = "SELECT * FROM category limit {$offset},{$pageSize}";
     $res = $mysqli->query($sql);
-
     $data=[];
     while($row = $res->fetch_assoc()){
         $data[]=$row;
@@ -55,7 +54,7 @@
                     <td><?php echo $item['id'];?></td>
                     <td><?php echo $item['name'];?></td>
                     <td>
-                        <button class="btn btn-sm btn-default btn-edit" data-id="<?php echo $item['id'];?>">编辑</button>
+                        <a href="category-edit.php?id=<?php echo $item['id'];?>" class="btn btn-sm btn-default btn-edit" data-id="<?php echo $item['id'];?>">编辑</a>
                         <button class="btn btn-sm btn-warning btn-del" data-id="<?php echo $item['id'];?>">删除</button>
                     </td>
                 </tr>
@@ -72,7 +71,7 @@
                             }
                             $prev = $page-1;
                             $next = $page+1;
-                            if($totalPage>$page){
+                            if($totalPage>=$page){
                                 if($page == 1){
                                     $pageBar.="<a href='category-list.php?p={$next}'>下一页</a> ";
                                     $pageBar.="<a href='category-list.php?p={$totalPage}'>尾页</a> ";

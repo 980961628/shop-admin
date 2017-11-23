@@ -1,0 +1,20 @@
+
+CREATE TABLE `shop` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `name` varchar(50) NOT NULL,
+ `cid` tinyint(5) NOT NULL,
+ `create_time` varchar(15) NOT NULL,
+ `edit_time` varchar(15) NOT NULL,
+ `is_show` tinyint(4) NOT NULL DEFAULT '0',
+ `repertory` int(11) NOT NULL DEFAULT '0',
+ `pic` varchar(50) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8
+
+CREATE TABLE `category` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `name` varchar(50) NOT NULL,
+ `create_time` varchar(15) NOT NULL,
+ `edit_time` varchar(15) NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8

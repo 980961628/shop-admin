@@ -30,10 +30,22 @@
             }
             echo json_encode( $result );exit();
             break;
+        case 'edit':
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $edit_time = time();
+            $sql = "UPDATE category SET name='{$name}',edit_time='{$edit_time}' WHERE id={$id}";
+            $res = $mysqli->query($sql);
+            if($mysqli->affected_rows){
+                $result['msg'] = '修改成功';
+                $result['status'] = 0;
+            }else{
+                $result['msg'] = '修改失败';
+                $result['status'] = 10000;
+            }
+            echo json_encode( $result );exit();
+            break;
         default :
             echo 0;
             break;
     }
-
-
-?>

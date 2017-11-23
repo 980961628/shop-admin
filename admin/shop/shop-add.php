@@ -35,7 +35,7 @@
             <div class="form-group">
                 <label for="pic" class="col-sm-1 col-md-1 col-lg-1 control-label">商品图片</label>
                 <div class="col-sm-3 col-md-3 col-lg-3">
-                    <input type="file" class="form-control" id="pic" name="pic" placeholder="请选择商品图片" accept="image/png,image/gif" >
+                    <input type="file" class="form-control" id="pic" name="pic" placeholder="请选择商品图片" >
                 </div>
             </div>
             <div class="form-group">
