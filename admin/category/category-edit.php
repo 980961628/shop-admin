@@ -4,7 +4,6 @@
     $sql = "SELECT * from category WHERE id={$id}";
     $res = $mysqli->query($sql);
     $data = $res->fetch_assoc();
-//    var_dump($data);
 ?>
 <!doctype html>
 <html lang="en">

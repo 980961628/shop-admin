@@ -102,3 +102,68 @@ function files_upload($name="photo",$save_dir="images",$allow_suffix=array('jpg'
 
     return $response;
 }
+
+//图像等比例缩放函数
+/**
+ *等比例缩放函数（以保存新图片的方式实现）
+ *@param string $picname  被缩放的处理图片源
+ *@param int $maxx 缩放后图片的最大宽度
+ *@param int $maxy 缩放后图片的最大高度
+ *@param string $pre 缩放后图片的前缀名
+ *@return $string 返回后的图片名称（） 如a.jpg->s.jpg
+ *
+ **/
+     function imageUpdatesize($picname,$maxx=100,$maxy=100,$pre="s_"){
+         $info=getimageSize($picname);//获取图片的基本信息
+         $w=$info[0];//获取宽度
+         $h=$info[1];//获取高度
+         //获取图片的类型并为此创建对应图片资源
+         switch($info[2]){
+             case 1://gif
+                 $im=imagecreatefromgif($picname);
+                 break;
+             case 2://jpg
+                 $im=imagecreatefromjpeg($picname);
+                 break;
+             case 3://png
+                 $im=imagecreatefrompng($picname);
+                 break;
+             default:
+                 die("图像类型错误");
+         }
+         //计算缩放比例
+         if(($maxx/$w)>($maxy/$h)){
+             $b=$maxy/$h;
+         }else{
+             $b=$maxx/$w;
+         }
+         //计算出缩放后的尺寸
+         $nw=floor($w*$b);
+         $nh=floor($h*$b);
+         //创建一个新的图像源（目标图像）
+         $nim=imagecreatetruecolor($nw,$nh);
+         //执行等比缩放
+         imagecopyresampled($nim,$im,0,0,0,0,$nw,$nh,$w,$h);
+         //输出图像（根据源图像的类型，输出为对应的类型）
+         $picinfo=pathinfo($picname);//解析源图像的名字和路径信息
+         $newpicname=$picinfo["dirname"]."/".$pre.$picinfo["basename"];
+         switch($info[2]){
+             case 1:
+                 imagegif($nim,$newpicname);
+                 break;
+             case 2:
+                 imagejpeg($nim,$newpicname);
+                 break;
+             case 3:
+                 imagepng($nim,$newpicname);
+                 break;
+         }
+         //释放图片资源
+         imagedestroy($im);
+         imagedestroy($nim);
+         //返回结果
+         return $newpicname;
+     }
+    // 测试成功
+//     echo    imageUpdatesize("images/qie.jpg",150,150,ss_); // 返回的结果为 images/ss_qie.jpg
+?>
