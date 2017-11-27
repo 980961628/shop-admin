@@ -17,7 +17,9 @@
 </head>
 <body>
     <header class="ui-header ui-header-positive ui-border-b">
-        <i class="ui-icon-return" onclick="history.back()"></i><h1><?php echo $shop['name'];?></h1>
+        <i class="ui-icon-return" onclick="history.back()"></i>
+        <h1><?php echo $shop['name'];?></h1>
+        <i class="ui-icon-home" onclick="location.href='index.php'"></i>
     </header>
     <div style="height: 45px;"></div>
     <div class="swiper-container">
@@ -31,14 +33,30 @@
     </div>
     <div class="container">
         <h2 class="name"><?php echo $shop['name'];?></h2>
-        <div class="price">￥<?php echo $shop['price'];?>/元</div>
+        <div class="price">￥ <strong  style="color:red;"><?php echo $shop['price'];?></strong></div>
+        <div class="desc"><?php echo $shop['des'];?></div>
     </div>
-
     <div class="cart"><i>0</i></div>
+    <div class="checked-box ui-border-t">
+        <h3 style="padding: 10px 0;">请选择地区</h3>
+        <div>
+            <button class="ui-btn address_type on" data-address-type="1" data-price="<?php echo $shop['price'];?>">省内包邮 ￥<?php echo $shop['price'];?></button>
+            <button class="ui-btn address_type" data-address-type="2" data-price="<?php echo $shop['price2'];?>">省外包邮 ￥<?php echo $shop['price2'];?></button>
+        </div>
+        <h3 style="padding: 10px 0;">数量</h3>
+        <div>
+            <button class="ui-btn btn-reduce">-</button>
+            <button class="ui-btn num">1</button>
+            <button class="ui-btn btn-add">+</button>
+        </div>
+        <h3 style="line-height: 40px;">总价: ￥<span class="totalPrice" style="color: red;font-size: 20px;">0</span></h3>
+        <i class="ui-icon-close-page"></i>
+    </div>
     <footer>
+
         <ul class="ui-tiled ui-border-t">
-            <li class="ui-border-r"><div>加入购物车</div></li>
-            <li><div>立即下单</div></li>
+            <li class="ui-border-r btn-add-cart"><div>加入购物车</div></li>
+            <li class="btn-buy"><div>立即下单</div></li>
         </ul>
     </footer>
 
@@ -52,6 +70,119 @@
             autoplay: 3000,
             pagination: '.swiper-pagination'
         });
+    </script>
+    <script>
+        $(function(){
+            var uid = '<?php echo $_SESSION['uid'];?>';
+            var shop_id = '<?php echo $_GET['id'];?>';
+            totalPrice();
+            $('.address_type').click(function(){
+                $(this).addClass('on').siblings().removeClass('on');
+                totalPrice();
+            });
+            //
+            $(".btn-buy").click(function(){
+                if($(".checked-box").hasClass('on')){
+//                    $(".checked-box").removeClass('on')
+                    //下单方式
+                    var price_type=$(".address_type.on").attr("data-address-type");
+                    var num=$(".num").text();
+                    if(!uid){
+                        alert('请先登录哦亲!');
+                        location.href='login.php';
+                    }
+                    var price =$(".address_type.on").attr("data-price");
+                    console.log(price_type);
+                    console.log(num);
+                    $.ajax({
+                        url:"api/api.php",
+                        type:"post",
+                        dataType:"json",
+                        data:{
+                            module:"orders",
+                            uid:uid,
+                            num:num,
+                            shop_id:shop_id,
+                            price:price,
+                            price_type:price_type,
+                            address_id:1
+                        },
+                        success:function(res){
+                            console.log(res)
+                            alert(res.msg)
+                            if(res.status==0){
+                                location.href="order-list.php";
+                            }
+                        },
+                        error:function(err){
+                            console.log(err)
+                        }
+                    })
+                }else{
+                    $(".checked-box").addClass('on')
+                }
+            });
+            $(".ui-icon-close-page").click(function(){
+                $(".checked-box").removeClass('on')
+            });
+            $(".btn-add").click(function(){
+                var num=$(".num").text();
+                num++;
+                $(".num").text(num);
+                totalPrice();
+            });
+            $(".btn-reduce").click(function(){
+                var num=$(".num").text();
+                if(num>1){
+                    num--;
+                    $(".num").text(num);
+                    totalPrice();
+                }
+            });
+
+            function totalPrice(){
+                var price = $(".address_type.on").attr("data-price");
+                var num = $(".num").text();
+                var total = price*num;
+                $(".totalPrice").text(total);
+                return total;
+            };
+
+            //加入购物车
+            $(".btn-add-cart").click(function(){
+                if($(".checked-box").hasClass('on')){
+//                    $(".checked-box").removeClass('on')
+                    //下单方式
+//                    var price_type=$(".address_type.on").attr("data-address-type");
+//                    var num=$(".num").text();
+//                    console.log(addressType)
+//                    console.log(num)
+                    $.ajax({
+                        url:"api/api.php",
+                        type:"post",
+                        dataType:"json",
+                        data:{
+                            module:"cart",
+                            uid:uid,
+                            shop_id:shop_id
+                        },
+                        success:function(res){
+                            console.log(res)
+                            alert(res.msg)
+                            if(res.status==0){
+//                                location.href="order-list.php";
+                            }
+                        },
+                        error:function(err){
+                            console.log(err)
+                        }
+                    })
+                }else{
+                    $(".checked-box").addClass('on')
+                }
+            });
+
+        })
     </script>
 </body>
 </html>

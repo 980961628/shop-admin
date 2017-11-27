@@ -1,0 +1,94 @@
+@import "base";
+body{
+    //background:url("../images/fmj.jpg") no-repeat;
+    //background-position:0 0;
+    //background-size: 100% 100%;
+    height: 100%;
+    overflow: hidden;
+    //position: relative;
+    padding-bottom:0 !important;
+}
+html{
+    height: 100%;
+}
+.page{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,.2);
+    .login-box{
+        text-align: center;
+        margin-top: 60%;
+        li{
+            margin-bottom: 20px;
+            input{
+                width: 60%;
+                border: 1px solid #fff;
+                outline: none;
+                background: none;
+                height: 40px;
+                line-height: 40px;
+                font-weight: bolder;
+                text-align: center;
+                color:#fff;
+                -webkit-border-radius:5px;
+                -moz-border-radius:5px;
+                border-radius:5px;
+            }
+            ::-webkit-input-placeholder { /* WebKit browsers */
+                color:#fff;
+                font-weight: 400;
+            }
+            a{
+                font-size: 12px;
+                color: #fff;
+                text-decoration: underline;
+            }
+        }
+    }
+
+}
+.bg-img{
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    background:rgba(0,0,0,.5);
+    z-index: -1;
+    filter: blur(1px);
+    -webkit-animation: slide 15s;
+    animation: slide 15s;
+    animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite; /*Safari and Chrome*/
+    animation-direction:alternate;
+    -webkit-animation-direction:alternate; /* Safari 和 Chrome */
+}
+@keyframes slide {
+    from{
+        //left: -25%;
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+    }
+    to{
+        //left: 0;
+        -webkit-transform: translate3d(50%,0,0);
+        transform: translate3d(50%,0,0);
+    }
+}
+
+@-webkit-keyframes slide {
+    from{
+        //left: -25%;
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+    }
+    to{
+        //left: 0;
+        -webkit-transform: translate3d(50%,0,0);
+        transform: translate3d(50%,0,0);
+    }
+}

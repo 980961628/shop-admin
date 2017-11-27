@@ -17,6 +17,11 @@ footer {
   z-index: 2;
   background: #ffffff;
 }
+header .ui-icon-home {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 .swiper-container img {
   width: 100%;
   vertical-align: top;
@@ -42,4 +47,31 @@ footer {
   right: 0;
   top: -10px;
   color: salmon;
+}
+.desc {
+  color: #666;
+}
+.checked-box {
+  position: fixed;
+  bottom: 50px;
+  width: 100%;
+  background: #fff;
+  padding: 10px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: translate3d(0, 200%, 0);
+  transform: translate3d(0, 200%, 0);
+}
+.checked-box.on {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.checked-box .address_type.on {
+  background: #00a5e0;
+  color: #fff;
+}
+.checked-box .ui-icon-close-page {
+  position: absolute;
+  top: 5px;
+  right: 25px;
 }

@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  padding-bottom: 60px!important;
+}
+ul {
+  list-style: none;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  z-index: 2;
+  background: #ffffff;
+}
+header .ui-icon-home {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.cart-list-wrapper .ui-border-t {
+  padding-left: 60px;
+}
+.cart-list-wrapper .ui-list-img {
+  width: 68px;
+}
+.cart-list-wrapper .ui-list-img img {
+  width: 100%;
+  height: 100%;
+}
+.cart-list-wrapper .ui-switch {
+  right: auto;
+  left: 0;
+}
+.cart-list-wrapper .btns {
+  text-align: right;
+}
+.cart-list-wrapper .btns .ui-btn-s {
+  width: 40px;
+  min-width: 40px;
+}

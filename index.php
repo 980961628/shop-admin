@@ -1,11 +1,13 @@
 <?php
     include 'config.php';
+    include 'public/function.php';
     $sql = "SELECT * FROM shop ";
     $res = $mysqli->query($sql);
     $shopList=[];
     while($row = $res->fetch_assoc()){
         $shopList[]=$row;
     }
+//    var_dump($_SESSION);
 ?>
 <!doctype html>
 <html lang="en">
@@ -55,8 +57,8 @@
     </div>
     <footer>
         <ul class="ui-tiled ui-border-t">
-            <li class="ui-border-r"><div>店铺</div></li>
-            <li><div>我的</div></li>
+            <li class="ui-border-r"><a href="index.php"><div>店铺</div></a></li>
+            <li><a href="center.php"><div>我的</div></a></li>
         </ul>
     </footer>
 

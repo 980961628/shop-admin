@@ -22,3 +22,8 @@ header .ui-icon-home {
   right: 0;
   top: 0;
 }
+header .ui-icon-home {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

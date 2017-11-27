@@ -166,4 +166,11 @@ function files_upload($name="photo",$save_dir="images",$allow_suffix=array('jpg'
      }
     // 测试成功
 //     echo    imageUpdatesize("images/qie.jpg",150,150,ss_); // 返回的结果为 images/ss_qie.jpg
+    function checkLogin(){
+        if(empty($_SESSION['uid'])){
+            echo "<script>location.href='login.php'</script>";
+        }
+    }
+    checkLogin();
+
 ?>
