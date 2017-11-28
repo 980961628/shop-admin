@@ -19,7 +19,7 @@
     <header class="ui-header ui-header-positive ui-border-b">
         <i class="ui-icon-return" onclick="history.back()"></i>
         <h1><?php echo $shop['name'];?></h1>
-        <i class="ui-icon-home" onclick="location.href='index.php'"></i>
+        <button class="ui-btn" onclick="location.href='cart.php'" style="display: none">购物车</button>
     </header>
     <div style="height: 45px;"></div>
     <div class="swiper-container">
@@ -33,7 +33,10 @@
     </div>
     <div class="container">
         <h2 class="name"><?php echo $shop['name'];?></h2>
-        <div class="price">￥ <strong  style="color:red;"><?php echo $shop['price'];?></strong></div>
+        <div class="price" style="font-size: 13px;">
+            ￥ <strong  style="color:red;font-size:22px;"><?php echo $shop['price'];?></strong>
+            <span class="sell_count" style="margin-left: 20px;">销量: <?php echo $shop['sell_count'];?></span>
+        </div>
         <div class="desc"><?php echo $shop['des'];?></div>
     </div>
     <div class="cart"><i>0</i></div>
@@ -55,7 +58,7 @@
     <footer>
 
         <ul class="ui-tiled ui-border-t">
-            <li class="ui-border-r btn-add-cart"><div>加入购物车</div></li>
+            <li class="ui-border-r btn-add-cart" style="display: none"><div>加入购物车</div></li>
             <li class="btn-buy"><div>立即下单</div></li>
         </ul>
     </footer>
@@ -119,11 +122,13 @@
                         }
                     })
                 }else{
-                    $(".checked-box").addClass('on')
+                    $(".checked-box").addClass('on');
+                    $(this).text("确认")
                 }
             });
             $(".ui-icon-close-page").click(function(){
                 $(".checked-box").removeClass('on')
+                $(".btn-buy").text("立即下单")
             });
             $(".btn-add").click(function(){
                 var num=$(".num").text();

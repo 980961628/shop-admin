@@ -31,6 +31,43 @@ switch($module){
         }
         echo json_encode($data);
         break;
+    case "cart-orders":
+        $time=time();
+        $no=date('Y-m-d')."_".$time;
+        $uid = $_POST['uid'];
+        $params =explode(',',$_POST['params']);
+        $price_type=1;
+        foreach($params as $param){
+            $tmp = explode('||',$param);
+            $shop_id = $tmp[0];
+
+            $num=$tmp[1];
+            $sql ="INSERT INTO orders(uid,shop_id,price_type,created_time,price,no,num,address_id) VALUES ({$uid},{$shop_id},{$price_type},{$time},'{$price}','{$no}','{$num}','{$address_id}')";
+
+            $res =$mysqli->query($sql);
+            $shopData = $res->fetch_assoc();
+            $shopList[]=$shopData;
+        };
+        echo json_encode($shop_arr);
+        exit();
+
+        $shop_id = $_POST['shop_ids'];
+
+        $price = $_POST['price'];
+        $num = $_POST['num'];
+        $address_id = $_POST['address_id'];
+        $price_type = $_POST['price_type'];
+        $sql ="INSERT INTO orders(uid,shop_id,price_type,created_time,price,no,num,address_id) VALUES ({$uid},{$shop_id},{$price_type},{$time},'{$price}','{$no}','{$num}','{$address_id}')";
+        $res = $mysqli->query($sql);
+        if($res){
+            $data['status']=0;
+            $data['msg']='下单成功';
+        }else{
+            $data['status']=1;
+            $data['msg']='下单失败';
+        }
+        echo json_encode($data);
+        break;
     case "cart":
 //        $no=date('Y-m-d')."_".$time;
         $shop_id = $_POST['shop_id'];

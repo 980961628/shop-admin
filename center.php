@@ -25,7 +25,7 @@
         </div>
     </div>
     <ul class="ui-list ui-border-tb ui-list-link">
-        <li class="ui-border-t" onclick="location.href='cart.php'">
+        <li class="ui-border-t" onclick="location.href='cart.php'" style="display: none">
             <div class="ui-list-thumb-s">
                 <span style="background-image:url(http://placeholder.qiniudn.com/56x56)"></span>
             </div>

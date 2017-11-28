@@ -23,5 +23,31 @@
             min-width: 40px;
         }
     }
+}
 
+.checked-box{
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+    background: #fff;
+    padding: 10px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transform: translate3d(0,200%,0);
+    transform: translate3d(0,200%,0);
+    &.on{
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+    }
+    .address_type{
+        &.on{
+            background: #00a5e0;
+            color: #fff;
+        }
+    }
+    .ui-icon-close-page{
+        position: absolute;
+        top:5px;right: 25px;
+
+    }
 }
